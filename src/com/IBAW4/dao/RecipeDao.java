@@ -45,12 +45,13 @@ public class RecipeDao {
     	
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into recipe(recipename, dishtype, dishflavour, difficultylevel) values (?, ?, ?, ?)");
+                    .prepareStatement("insert into recipe(name, type, flavour, difficulty, instruction) values (?, ?, ?, ?, ?)");
             // Parameters start with 1
             preparedStatement.setString(1, recipe.getName());
             preparedStatement.setString(2, recipe.getType());
             preparedStatement.setString(3, recipe.getFlavour());
             preparedStatement.setString(4, recipe.getDifficulty());
+            preparedStatement.setString(5, recipe.getInstruction());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -70,7 +71,7 @@ public class RecipeDao {
         	 * userid
         	 */
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("delete from recipe where recipeid=?");
+                    .prepareStatement("delete from recipe where recipe_id=?");
             // Parameters start with 1
             preparedStatement.setInt(1, recipeId);
             preparedStatement.executeUpdate();
@@ -87,14 +88,15 @@ public class RecipeDao {
     	 */
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("update recipe set recipename=?, dishtype=?, dishflavour=?, difficultylevel=?" +
-                            "where recipeid=?");
+                    .prepareStatement("update recipe set name=?, type=?, flavour=?, difficulty=?, instruction=?" +
+                            "where recipe_id=?");
             // Parameters start with 1
             preparedStatement.setString(1, recipe.getName());
             preparedStatement.setString(2, recipe.getType());
             preparedStatement.setString(3, recipe.getFlavour());
             preparedStatement.setString(4, recipe.getDifficulty());
-            preparedStatement.setInt(5, recipe.getRecipeId());
+            preparedStatement.setString(5, recipe.getInstruction());
+            preparedStatement.setInt(6, recipe.getRecipeId());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -121,6 +123,7 @@ public class RecipeDao {
                 recipe.setType(rs.getString("type"));
                 recipe.setFlavour(rs.getString("flavour"));
                 recipe.setDifficulty(rs.getString("difficulty"));
+                recipe.setInstruction(rs.getString("instruction"));
                 recipes.add(recipe);
             }
         } catch (SQLException e) {
@@ -138,7 +141,7 @@ public class RecipeDao {
         Recipe recipe = new Recipe();
         try {
             PreparedStatement preparedStatement = connection.
-                    prepareStatement("select * from recipe where recipeid=?");
+                    prepareStatement("select * from recipe where recipe_id=?");
             preparedStatement.setInt(1, recipeId);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -148,6 +151,7 @@ public class RecipeDao {
                 recipe.setType(rs.getString("type"));
                 recipe.setFlavour(rs.getString("flavour"));
                 recipe.setDifficulty(rs.getString("difficulty"));
+                recipe.setInstruction(rs.getString("instruction"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

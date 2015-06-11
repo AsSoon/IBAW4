@@ -23,6 +23,7 @@ public class Recipe {
     private e_type type;
     private e_difficulty difficulty;
     private e_flavour flavour;
+    private String instruction;
     //private int time;
     //private int calories;
     private ArrayList <Product> products;
@@ -34,6 +35,12 @@ public class Recipe {
     }
     public String getName() {
         return name;
+    }
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
+    public String getInstruction() {
+        return instruction;
     }
     public void setType(e_type type) {
         this.type = type;
