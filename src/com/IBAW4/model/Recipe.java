@@ -18,6 +18,7 @@ enum e_difficulty{
 }
 
 public class Recipe {
+    private int recipe_id;
     private String name;
     private e_type type;
     private e_difficulty difficulty;
@@ -26,6 +27,8 @@ public class Recipe {
     //private int calories;
     private ArrayList <Product> products;
 
+    public void setRecipe_id(int recipe_id) {this.recipe_id = recipe_id;}
+    public int getRecipe_id() {return recipe_id;}
     public void setName(String name) {
         this.name = name;
     }
@@ -61,7 +64,8 @@ public class Recipe {
     }*/
     @Override
     public String toString() {
-        return "Recipe [Name=" + name + "products=" + products + ", type=" + type
-                + ", flavour=" + flavour + ", difficulty level=" + difficulty + "]";
+        return "Recipe [id=" + recipe_id + "Name=" + name + "products=" + products
+                + ", type=" + type + ", flavour=" + flavour + ", difficulty level="
+                + difficulty + "]";
     }
 }

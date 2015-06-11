@@ -116,11 +116,11 @@ public class RecipeDao {
             	 * wypełnianie listy
             	 */
                 Recipe recipe = new Recipe();
-                recipe.setRecipeId(rs.getInt("recipeid"));
-                recipe.setName(rs.getString("recipename"));
-                recipe.setType(rs.getString("dishtype"));
-                recipe.setFlavour(rs.getString("dishflavour"));
-                recipe.setDifficulty(rs.getString("difficultylevel"));
+                recipe.setRecipeId(rs.getInt("recipe_id"));
+                recipe.setName(rs.getString("name"));
+                recipe.setType(rs.getString("type"));
+                recipe.setFlavour(rs.getString("flavour"));
+                recipe.setDifficulty(rs.getString("difficulty"));
                 recipes.add(recipe);
             }
         } catch (SQLException e) {
@@ -143,11 +143,11 @@ public class RecipeDao {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                recipe.setRecipeId(rs.getInt("recipeid"));
-                recipe.setName(rs.getString("recipename"));
-                recipe.setType(rs.getString("dishtype"));
-                recipe.setFlavour(rs.getString("dishflavour"));
-                recipe.setDifficulty(rs.getString("difficultylevel"));
+                recipe.setRecipeId(rs.getInt("recipe_id"));
+                recipe.setName(rs.getString("name"));
+                recipe.setType(rs.getString("type"));
+                recipe.setFlavour(rs.getString("flavour"));
+                recipe.setDifficulty(rs.getString("difficulty"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
