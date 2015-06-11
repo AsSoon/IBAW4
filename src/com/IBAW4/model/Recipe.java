@@ -1,4 +1,4 @@
-package com.IBAW4.model;
+package com.daniel.model;
 
 /**
  * File module, class Recipe.java
@@ -11,7 +11,7 @@ enum e_type{
     SOUP, DESSERT, SALAD, STARTER, MAIN_COURSE, DRINK
 }
 enum e_flavour{
-    SWEET, BITTER, SALTY, SOUR
+    SWEET, BITTER, SALTY, SOUR, SPICY
 }
 enum e_difficulty{
     EASY, MEDIUM, HARD
